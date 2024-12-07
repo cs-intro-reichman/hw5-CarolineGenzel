@@ -89,11 +89,8 @@ public class Scrabble {
 	public static String createHand() {
 		int length=HAND_SIZE-2;
 		String word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
-		if (word== null) {
-			return null;
-		}
-
-		while(length != word.length()){
+		
+		while(word!=null && length != word.length()){
 			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 		}
 
@@ -143,13 +140,13 @@ public class Scrabble {
 					newScore=wordScore(input);
 					score+=newScore;
 					hand=tempHand;
-					System.out.println(input+ " earned "+ newScore +" points. Score: "+score+" points.");
+					System.out.println(input+ " earned "+ newScore +" points. Score: "+score+" points");
 					System.out.println();
 
 					
 				}
 				else {
-					System.out.println("word not in the hand, try again.");
+					System.out.println("No such word in the dictionary. Try again.");
 					
 					}
 
