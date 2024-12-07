@@ -94,11 +94,14 @@ public class Scrabble {
 			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 		}
 
-		int random1=(int)(Math.random()*(word.length()+1));
-		int random2=(int)(Math.random()*(word.length()+1));
-
-		word=word.substring(0,random1+1)+"e"+word.substring(random1+1);
-		word=word.substring(0,random2+1)+"a"+word.substring(random2+1);
+		if (word != null) {
+			int random1=(int)(Math.random()*(word.length()));
+			int random2=(int)(Math.random()*(word.length()));
+	
+			word=word.substring(0,random1+1)+"e"+word.substring(random1+1);
+			word=word.substring(0,random2+1)+"a"+word.substring(random2+1);
+			
+}
 		return word;
 	}
 	
