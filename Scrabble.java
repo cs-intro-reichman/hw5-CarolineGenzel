@@ -88,7 +88,7 @@ public class Scrabble {
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
 		int length=HAND_SIZE-2;
-		String word="";
+		String word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 
 		while(length != word.length()){
 			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
