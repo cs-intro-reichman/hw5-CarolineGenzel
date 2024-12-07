@@ -48,7 +48,7 @@ public class Scrabble {
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
-		for(int i=0;i<MAX_NUMBER_OF_WORDS;i++){
+		for(int i=0;i<NUM_OF_WORDS;i++){
 			if (word.equals(DICTIONARY[i])) {
 				return true;
 		}
@@ -61,11 +61,9 @@ public class Scrabble {
 	// If the length of the word equals the length of the hand, adds 50 points to the score.
 	// If the word includes the sequence "runi", adds 1000 points to the game.
 	public static int wordScore(String word) {
-	
 		String runi="runi";
 		int j=0;
 		int points=0;
-	    if (isWordInDictionary(word)) {
 			for(int i=0;i<word.length();i++){
 				char w=word.charAt(i);
 				points+=SCRABBLE_LETTER_VALUES[w-'a'];
@@ -73,15 +71,16 @@ public class Scrabble {
 					j++;
 				}
 				}
+				if (word.length()==HAND_SIZE) {
+					return points*word.length()+50;
+				}
 				if (j==4) {
-					points+=1000;
+					return points*word.length()+1000;
 				}
-				if (isWordInDictionary(word) && word.length()==HAND_SIZE) {
-					points+=50;
-				}
-			}
+				
+			
 		
-		return points;
+		return points*word.length();
 	}
 
 	// Creates a random hand of length (HAND_SIZE - 2) and then inserts
@@ -92,7 +91,7 @@ public class Scrabble {
 		String word="";
 
 		while(length != word.length()){
-			word= DICTIONARY[(int)(Math.random()*10000)];
+			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 		}
 
 		int random1=(int)(Math.random()*word.length());
@@ -135,11 +134,10 @@ public class Scrabble {
 			if (input.equals(".")) {
 				break;
 			}
-			String newWord=hand;
 			int counter=0;
 			if (isWordInDictionary(input)) {
 				String tempHand = hand;
-				
+				int newScore=0;
 				for (int i=0; i < input.length(); i++) {
 					char ch = input.charAt(i);
 					int index = tempHand.indexOf(ch);
@@ -151,8 +149,12 @@ public class Scrabble {
 				}
 				
 				if (counter == input.length()) {
-					score+=wordScore(input);
+					newScore=wordScore(input);
+					score+=newScore;
 					hand=tempHand;
+					System.out.println(input+ " earnd "+ newScore +" points. Score: "+score+" points.");
+					System.out.println();
+
 					
 				}
 				else {
