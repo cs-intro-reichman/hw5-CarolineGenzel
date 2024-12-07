@@ -97,20 +97,8 @@ public class Scrabble {
 		int random1=(int)(Math.random()*word.length());
 		int random2=(int)(Math.random()*word.length());
 
-		for(int i=0; i < word.length(); i++){
-			if(random1 == i && random2==i){
-				word=word.substring(0,i)+"ea"+word.substring(i+1);
-				break;
-			}
-			if(random1 == i){
-				word=word.substring(0,i)+"e"+word.substring(i+1);
-			}
-			if(random2 == i){
-				word=word.substring(0,i)+"a"+word.substring(i+1);
-			}
-
-		}
-
+		word=word.substring(0,random1+1)+"e"+word.substring(random1+1);
+		word=word.substring(0,random2+1)+"a"+word.substring(random2+1);
 		return word;
 	}
 	
