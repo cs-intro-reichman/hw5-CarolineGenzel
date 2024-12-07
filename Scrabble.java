@@ -90,14 +90,10 @@ public class Scrabble {
 		int length=HAND_SIZE-2;
 		String word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 
-		while(word!=null && length != word.length()){
+		while( word==null && length != word.length()){
 			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 		}
-		if (word==null) {
-			return "";
-		}
 
-		
 			int random1=(int)(Math.random()*(word.length()));
 			int random2=(int)(Math.random()*(word.length()));
 	
