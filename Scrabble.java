@@ -90,7 +90,7 @@ public class Scrabble {
 		int length=HAND_SIZE-2;
 		String word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 
-		while(length != word.length()){
+		while(word != null && length != word.length()){
 			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
 		}
 
@@ -151,7 +151,7 @@ public class Scrabble {
 					}
 
 				}
-				else {System.out.println("not a real word, try again.");}			
+				else {System.out.println("Invalid word. Try again.");}			
 			
 		}
 		if (hand.length() == 0) {
