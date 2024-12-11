@@ -2,12 +2,21 @@ import java.io.*;
 
 public class ScrabbleTest {
     public static void main(String[] args) {
-        testIsWordInDictionary();
-        testWordScore();
-        testCreateHand();
-        testPlayHand();
-        testPlayHandWithMockInput();
-       testPlayGameWithMockInput();    }
+        if (args.length == 0) {
+            System.out.println("Please provide a specific test to run: isWordInDictionary, wordScore, createHand, playHand, playHandWithMockInput, or playGameWithMockInput.");
+            return;
+        }
+        // Run specific test based on argument
+        switch (args[0]) {
+            case "isWordInDictionary": testIsWordInDictionary(); break;
+            case "wordScore": testWordScore(); break;
+            case "createHand": testCreateHand(); break;
+            case "playHand": testPlayHand(); break;
+            case "playHandWithMockInput": testPlayHandWithMockInput(); break;
+            case "playGameWithMockInput": testPlayGameWithMockInput(); break;
+            default: System.out.println("Unknown test: " + args[0]);
+        }
+    }
 
     private static void testIsWordInDictionary() {
         System.out.println("\nTesting isWordInDictionary():");
@@ -152,4 +161,4 @@ public class ScrabbleTest {
             System.setIn(originalIn);
         }
     }
-} 
+}
