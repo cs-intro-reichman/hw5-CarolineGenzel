@@ -87,10 +87,21 @@ public class Scrabble {
 	// into it, at random indexes, the letters 'a' and 'e'
 	// (these two vowels make it easier for the user to construct words)
 	public static String createHand() {
-		String randomWord= MyString.randomStringOfLetters(HAND_SIZE-2);
-		String newRandomWord=MyString.insertRandomly('a', randomWord);
-		newRandomWord= MyString.insertRandomly('e', newRandomWord);
-		return newRandomWord;
+		int length=HAND_SIZE-2;
+		String word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
+
+		while( word==null && length != word.length()){
+			word= DICTIONARY[(int)(Math.random()*NUM_OF_WORDS)];
+		}
+
+			int random1=(int)(Math.random()*(word.length()));
+			int random2=(int)(Math.random()*(word.length()));
+	
+			word=word.substring(0,random1+1)+"e"+word.substring(random1+1);
+			word=word.substring(0,random2+1)+"a"+word.substring(random2+1);
+			
+
+		return word;
 	}
 	
     // Runs a single hand in a Scrabble game. Each time the user enters a valid word:
