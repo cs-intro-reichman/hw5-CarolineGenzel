@@ -161,4 +161,4 @@ public class ScrabbleTest {
             System.setIn(originalIn);
         }
     }
-} 
+}
