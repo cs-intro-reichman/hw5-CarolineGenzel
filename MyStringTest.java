@@ -1,18 +1,11 @@
 public class MyStringTest {
     public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Please provide a specific test to run: countChar, subsetOf, spacedString, randomStringOfLetters, or remove.");
-            return;
-        }
-        // Run specific test based on argument
-        switch (args[0]) {
-            case "countChar": testCountChar(); break;
-            case "subsetOf": testSubsetOf(); break;
-            case "spacedString": testSpacedString(); break;
-            case "randomStringOfLetters": testRandomStringOfLetters(); break;
-            case "remove": testRemove(); break;
-            default: System.out.println("Unknown test: " + args[0]);
-        }
+       testCountChar();
+       testSubsetOf();
+       testSpacedString();
+       testRandomStringOfLetters();
+       testRemove();
+
     }
 
     private static void testCountChar() {

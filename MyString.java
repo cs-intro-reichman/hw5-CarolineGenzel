@@ -120,23 +120,23 @@ public class MyString {
      * @param str2 - a string
      * @return a string consisting of str1 minus all the characters of str2
      */
-    public static String remove(String str2 , String str1) {
-            String finalString = str2;
-        
-            for (int i = 0; i < str1.length(); i++) {
-                char c1 = str1.charAt(i);
-        
-                for (int j = 0; j < finalString.length(); j++) {
-                    char c2 = finalString.charAt(j);
-                    if (c1 == c2) {
-                        finalString = finalString.substring(0, j) + finalString.substring(j + 1);
-                        break; 
-                    }
+    public static String remove(String str1 , String str2) {
+        String finalString = str1;
+    
+        for (int i = 0; i < str2.length(); i++) {
+            char c2 = str2.charAt(i);
+    
+            for (int j = 0; j < finalString.length(); j++) {
+                char c1 = finalString.charAt(j);
+                if (c1 == c2) {
+                    finalString = finalString.substring(0, j) + finalString.substring(j + 1);
+                    break; 
                 }
             }
-        
-            return finalString;
         }
+    
+        return finalString;
+    }
 
 
     /**
