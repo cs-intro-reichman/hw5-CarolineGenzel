@@ -70,13 +70,13 @@ public class Scrabble {
 			score += 50;
 		}
 		String runi = "runi";
-		boolean runiIn = true;
+		boolean runib = true;
 		for (int i = 0; i < runi.length(); i++) {
 			if (word.indexOf(runi.charAt(i))==-1){
-				runiIn = false;
+				runib = false;
 			}
 		}
-		if (runiIn){
+		if (runib){
 			score += 1000;
 		}
 		
