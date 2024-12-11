@@ -28,10 +28,6 @@ public class MyString {
      */
     public static int countChar(String str, char ch) {
        int counter=0;
-       if (str == null) {
-        return 0;
-       }
-
         for(int i=0;i<str.length();i++){
         char c=str.charAt(i);
         if (c==ch) {
@@ -53,16 +49,12 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-        int i=0;
-         while(i<str1.length()){
-            char c1=str1.charAt(i);
-            if(countChar(str2,c1) != countChar(str1, c1)){
-                return false;
-
-            }
-            i++;
-        }
-            return true;
+       for( int i=0;i<str1.length();i++){
+        if(countChar(str2, str1.charAt(i))<countChar(str1, str1.charAt(i))){
+            return false;
+                }
+       }
+       return true;
      }  
            
             
@@ -78,16 +70,15 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-     
-        if (str.length()<=1) {
-        return str;
-      }
-      String newStr=""+str.charAt(0);
-       for(int i=1;i<str.length();i++){
-            newStr+=" "+str.charAt(i);
-    
-       }
-        return newStr;
+     String spaceS="";
+        if(str.length()<=1){
+            return str;
+        }
+        for(int i=0;i<str.length()-1;i++){
+            spaceS+=str.charAt(i)+ " ";
+        }
+        spaceS+=str.charAt(str.length()-1);
+        return spaceS;
     }
   
     /**
@@ -102,12 +93,11 @@ public class MyString {
      */
     public static String randomStringOfLetters(int n) {
         String newStr="";
-        int numPlace=0;
         for(int i=0;i<n;i++){
-            numPlace= (int)( Math.random()*26 + 97);
-            char c=(char)numPlace;
-            newStr+=""+c;
+            int randomNum=(int)((Math.random()*25)+97);
+            newStr+= (char)randomNum;
         }
+       
         return newStr;
     }
 
@@ -121,21 +111,15 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1 , String str2) {
-        String finalString = str1;
-    
-        for (int i = 0; i < str2.length(); i++) {
-            char c2 = str2.charAt(i);
-    
-            for (int j = 0; j < finalString.length(); j++) {
-                char c1 = finalString.charAt(j);
-                if (c1 == c2) {
-                    finalString = finalString.substring(0, j) + finalString.substring(j + 1);
-                    break; 
-                }
+       String newStr="";
+       for(int i=0;i<str1.length();i++){
+        if (countChar(str2, str1.charAt(i))+(countChar(newStr, str1.charAt(i)))!=(countChar(str1, str1.charAt(i)))){ 
+            newStr += str1.charAt(i); 
             }
-        }
+        
+       }
     
-        return finalString;
+        return newStr;
     }
 
 
